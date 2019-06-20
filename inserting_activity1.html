@@ -24,10 +24,16 @@
     <body>
         <h1>Accurate? Or not.</h1>
         <input type="password" id="bobross" onChange="display()">
+        <button onClick='Input()'>Confirm</button>
         <p>Type random words without looking at your keyboard above to check your typing accuracy</p>
-        <p id="demo"></p>
+        <password id="demo"></password>
 
         <script>
+            function Input() {
+                var s = document.getElementById('bobross').value;
+                alert('Your typing was' + s)
+            }
+
             function display() {
                 document.getElementById('demo').innerHTML = document.getElementById('bobross').value;
             }
