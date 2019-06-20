@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess my number</title>
+
+    <!--		EXTERNAL CSS -->
+    <!--		load Montserrat font from Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:600,900" rel="stylesheet">
+    <!--		load icon images from font awesome-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!--		Our own CSS -->
+    <link rel="stylesheet" href="numbers.css">
+
+</head>
+
+<body>
+    <!--		HTML for game-->
+    <div id="mainBox">
+        <p>Can you guess my number?</p>
+        <div id="interactive">
+            <input id="guess" type="number" min="1" max="100">
+            <i id="hand" class="fas fa-hand-point-left" onclick="compare()"><span>click<br>me!</span></i>
+        </div>
+        <div id="feedback" onclick="restart()">
+            <p>
+                <span id="response1"></span><br><span id="response2"></span>
+            </p>
+        </div>
+    </div>
+    <!--		JavaScript for game goes here-->
+    <script type="text/javascript">
+        var secretNumber;
+        var guessNumber;
+        var fbmessage = '';
+        var hue = 100,
+            saturation = 100,
+            lightness = 50;
+        secretNumber = math.round(Math.random() * 100)
+
+        function compare() {
+            guessNumber = document.getElementById('guess').value;
+            console.log(guessNumber)
+        }
+
+    </script>
+</body>
+
+</html>
