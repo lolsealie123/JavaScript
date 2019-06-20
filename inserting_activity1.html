@@ -1,0 +1,48 @@
+<!doctype.html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wow.</title>
+        <style>
+            body {
+                color: black;
+                font-family: sans-serif;
+            }
+
+            p {
+                font-family: serif;
+                border: 10px solid;
+            }
+
+            .bobross {}
+
+        </style>
+    </head>
+
+    <body>
+        <h1>Accurate? Or not.</h1>
+        <input type="password" id="bobross" onChange="display()">
+        <p>Type random words without looking at your keyboard above to check your typing accuracy</p>
+        <p id="demo"></p>
+
+        <script>
+            function display() {
+                document.getElementById('demo').innerHTML = document.getElementById('bobross').value;
+            }
+            var p = document.getElementById('demo');
+            p.innerHTML = "Hey Thisters";
+
+
+            var bobross = {
+                name: "demo1",
+                color: 'white',
+                age: 64
+            }
+            p.innerHTML = bobross.name
+
+        </script>
+    </body>
+
+    </html>
