@@ -1,0 +1,139 @@
+<!doctype.html>
+    <html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ninja Pup's Fun Quiz!</title>
+        <link rel="stylesheet" type="text/css" href="quiz.css">
+    </head>
+
+    <body>
+        <!--		HTML for game-->
+        <section>
+            <div id="main">
+                <div id="picture"></div>
+                <div id="blocks">
+                    <div class="row">
+                        <button id="1">1</button>
+                        <button id="2">2</button>
+                        <button id="3">3</button>
+                    </div>
+                    <div class="row">
+                        <button id="4">4</button>
+                        <button id="5">5</button>
+                        <button id="6">6</button>
+                    </div>
+                    <div class="row">
+                        <button id="7">7</button>
+                        <button id="8">8</button>
+                        <button id="9">9</button>
+                    </div>
+                </div>
+                <div id="questionWindow">
+                    <p id="q">question</p><br>
+                    <div class="answers">
+                        <p id="a1">answer 1</p>
+                        <p id="a2">answer 2</p>
+                        <p id="a3">answer 3</p>
+                        <p id="a4">answer 4</p>
+                    </div>
+                    <p id="continue">Click to continue</p>
+                </div>
+                <h1 id="win">Congratulations, You did it all!</h1>
+            </div>
+        </section>
+        <!--		JavaScript for game goes here-->
+        <script type="text/javascript" src="loader.js"></script>
+        <script type="text/javascript">
+            var buttonList = document.getElementsByTagName('button');
+            var btnArray = Array.from(buttonList);
+            var qDialog = document.getElementById('questionWindow')
+            console.log(buttonList)
+            console.log(btnArray)
+
+
+            for (var i = 0; i < btnArray.length; i++) {
+                addClicklistener(i)
+            }
+
+
+            function addClicklistener(index) {
+                btnArray[index].addEventListener('click', function() {
+                    showQDialog(index);
+                });
+
+            }
+            for (var i = 1; i <= 4; i++) {
+                var id = 'a' + i.toString();
+                document.getElementById(id).addEventListener('click', function(e) {
+                    checkAnswer(e);
+                })
+            }
+            document.getElementById('continue').addEventListener('click', function() {
+                qDialog.style.display = "none"
+            });
+
+            function checkAnswer(e) {
+                var target = e.target;
+
+                if (target.dataset['correct']) {
+                    target.style.color = 'green';
+                    document.getElementById('continue').style.display = "block";
+                } else {
+                    target.style.color = 'red';
+
+                }
+            }
+
+            function showQDialog(qNumber) {
+                qDialog.style.display = "block";
+                showQuestionNChoices(qNumber);
+            }
+
+            function showQuestionNChoices(qNumber) {
+                btnArray[qNumber].style.visibility = "hidden";
+                document.getElementById('q').innerHTML = questions[qNumber][0];
+
+                var randomChoices = getRandomList();
+                console.log(randomChoices)
+                /*for (var i = 1; i <= 4; i++) {
+                    var id = 'a' + i.toString();
+                    console.log(id, document.getElementById(id));
+                    document.getElementById(id).innerHTML = questions[qNumber][i];
+                    document.getElementById(id).style.color = 'black';
+                }*/
+
+                for (var i = 0; i < randomChoices.length; i++) {
+                    var id = 'a' + randomChoices[i].toString()
+
+                    if (document.getElementById(id).dataset['correct']) {
+                        delete document.getElementById(id).dataset['correct'];
+                    }
+
+                    if (i == 0) {
+                        document.getElementById(id).dataset['correct'] = true;
+                    }
+                    document.getElementById(id).innerHTML = questions[qNumber][i + 1];
+                    document.getElementById(id).style.color = 'black';
+                    document.getElementById('continue').style.display = "none";
+                }
+
+            }
+
+            function getRandomList() {
+                var randomChoices = [];
+                do {
+                    var n = Math.round(Math.random() * 4);
+                    if (n == 0) continue;
+                    if (randomChoices.indexOf(n) == -1) {
+                        randomChoices.push(n);
+                    }
+                } while (randomChoices.length < 4);
+                return randomChoices;
+            }
+
+        </script>
+    </body>
+
+    </html>

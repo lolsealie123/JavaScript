@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>Ninja Pup's Fun Quiz!</title>
+		<link rel="stylesheet" type="text/css" href="quiz.css">
+	</head>
+	<body>
+<!--		HTML for game-->
+		<section>
+			<div id="main">
+				<div id="picture"></div>
+				<div id="blocks">
+					<div class="row">
+						<button id="1">1</button>
+						<button id="2">2</button>
+						<button id="3">3</button>
+					</div>
+					<div class="row">
+						<button id="4">4</button>
+						<button id="5">5</button>
+						<button id="6">6</button>
+					</div>
+					<div class="row">
+						<button id="7">7</button>
+						<button id="8">8</button>
+						<button id="9">9</button>
+					</div>
+				</div>
+				<div id="questionWindow">
+					<p id="q">question</p><br>
+					<div class="answers">
+						<p id="a1">answer 1</p>
+						<p id="a2">answer 2</p>
+						<p id="a3">answer 3</p>
+						<p id="a4">answer 4</p>
+					</div>
+					<p id="continue">Click to continue</p>
+				</div>
+				<h1 id="win">Congratulations, You did it all!</h1>
+			</div>
+		</section>
+<!--		JavaScript for game goes here-->
+		<script type="text/javascript">
+			var myButtons = Array.from(document.getElementsByTagName("button"));
+			function listenerForButton(index){
+				myButtons[index].addEventListener("click", function(){
+					myButtons[index].style.visibility = "hidden";
+				});
+			}
+			for(var count = 0; count < 9; count++){
+				listenerForButton(count);
+			}
+
+		</script>
+	</body>
+</html>
